@@ -1,0 +1,18 @@
+build --symlink_prefix=.bazel/
+build --disk_cache=~/.cache/bazel-disk-cache
+build --noremote_upload_local_results
+build --show_result=20
+build --nolegacy_external_runfiles
+
+build --incompatible_strict_action_env
+run --incompatible_strict_action_env
+
+build --strict_system_includes
+build --show_timestamps
+
+test --test_verbose_timeout_warnings
+test --test_output=errors
+
+try-import %workspace%/.bazelrc.user
+
+# DO NOT ADD HERE; settings should be above the `try-import %workspace%/.bazelrc.user` line
